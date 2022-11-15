@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Rubik+Bubbles&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+header {
+    height: 90vh;
+    width: 100vw;
+    background: url('../images/background_snowtrick.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    border-bottom: 5px solid black;
+}
+
+.nav {
+    position: fixed;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav a {
+    color: burlywood;
+    text-decoration: none;
+}
+
+.nav .logo {
+    color: #A5483F;
+    font-size: 2em;
+    font-weight: 500;
+    font-family: 'Rubik Bubbles', sans-serif;
+}
+
+.nav .links ul {
+    display: flex;
+}
+
+.nav .links ul li {
+    margin: 0 25px;
+    font-family: 'Lora', sans-serif;
+}
+
+.nav .links ul li a {
+    color: #161A32;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.bx {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .nav {
+        padding: 0;
+    }
+    .bx {
+        display: block;
+        position: fixed;
+        opacity: 1;
+        font-size: 45px;
+    }
+    .links {
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.423);
+        backdrop-filter: blur(4px);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -100%;
+        transition: all 0.8s ease;
+    }
+    .mobile-menu {
+        margin-left: 0;
+    }
+    .links ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav .links ul li {
+        margin: 25px 0;
+        font-size: 1.2em;
+    }
+    .nav .links ul li a {
+        color: lightgrey;
+    }
+}
