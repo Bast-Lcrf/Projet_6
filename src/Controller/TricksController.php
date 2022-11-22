@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Tricks;
+use App\Entity\Category;
 use App\Form\TricksType;
 use App\Repository\TricksRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validation;
 
 #[Route('/tricks')]
 class TricksController extends AbstractController
@@ -25,7 +27,7 @@ class TricksController extends AbstractController
     public function new(Request $request, TricksRepository $tricksRepository): Response
     {
         $trick = new Tricks();
-        $form = $this->createForm(TricksType::class, $trick);
+        $form = $this->createForm(TricksType::class, $trick, ['validation_groups' => 'trick_new']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +53,7 @@ class TricksController extends AbstractController
     #[Route('/{id}/edit', name: 'app_tricks_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Tricks $trick, TricksRepository $tricksRepository): Response
     {
-        $form = $this->createForm(TricksType::class, $trick);
+        $form = $this->createForm(Tricks2Type::class, $trick);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

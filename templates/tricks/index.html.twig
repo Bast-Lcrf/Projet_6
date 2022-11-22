@@ -4,12 +4,19 @@
 
 {% block body %}
     <h1>Tricks index</h1>
+    <div class="tricks_home">
+        {% for trick in tricks %}
+        <h2>{{ trick.name }}</h2>
+        <p>{{ trick.description}}</p>
+        {% else %}
+        <p>pas de figure pour l'instant</p>
+        {% endfor %}
+    </div>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>IdCategory</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>CreateAt</th>
@@ -21,11 +28,10 @@
         {% for trick in tricks %}
             <tr>
                 <td>{{ trick.id }}</td>
-                <td>{{ trick.idCategory }}</td>
                 <td>{{ trick.name }}</td>
                 <td>{{ trick.description }}</td>
-                <td>{{ trick.createAt ? trick.createAt|date('Y-m-d') : '' }}</td>
-                <td>{{ trick.updateAt ? trick.updateAt|date('Y-m-d') : '' }}</td>
+                <td>{{ trick.createAt ? trick.createAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ trick.updateAt ? trick.updateAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_tricks_show', {'id': trick.id}) }}">show</a>
                     <a href="{{ path('app_tricks_edit', {'id': trick.id}) }}">edit</a>
@@ -33,11 +39,12 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ path('app_tricks_new') }}">Create new</a>
+    </body>
 {% endblock %}

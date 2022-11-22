@@ -12,10 +12,6 @@
                 <td>{{ trick.id }}</td>
             </tr>
             <tr>
-                <th>IdCategory</th>
-                <td>{{ trick.idCategory }}</td>
-            </tr>
-            <tr>
                 <th>Name</th>
                 <td>{{ trick.name }}</td>
             </tr>
@@ -25,11 +21,11 @@
             </tr>
             <tr>
                 <th>CreateAt</th>
-                <td>{{ trick.createAt ? trick.createAt|date('Y-m-d') : '' }}</td>
+                <td>{{ trick.createAt ? trick.createAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>UpdateAt</th>
-                <td>{{ trick.updateAt ? trick.updateAt|date('Y-m-d') : '' }}</td>
+                <td>{{ trick.updateAt ? trick.updateAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
