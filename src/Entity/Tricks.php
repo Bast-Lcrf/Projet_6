@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\TricksRepository;
-use Doctrine\DBAL\Types\Types;
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: TricksRepository::class)]
 class Tricks
@@ -14,32 +16,47 @@ class Tricks
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $idCategory = null;
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull()]
+    private ?Category $idCategory = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Ce champ doit être complété')]
+    #[Assert\Length(min: 2, max: 50)]
+    #[Assert\Unique()]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank(message: 'Ce champ doit être complété')]
+    #[Assert\Length(min: 2, max: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[ORM\Column]
+    #[Assert\NotNull()]
     private ?\DateTimeImmutable $createAt = null;
 
-    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[ORM\Column]
+    #[Assert\NotNull()]
     private ?\DateTimeImmutable $updateAt = null;
 
+    public function __construct()
+    {
+        $this->createAt = new \DateTimeImmutable();
+        $this->updateAt = new \DateTimeImmutable();
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdCategory(): ?int
+    public function getIdCategory(): ?Category
     {
         return $this->idCategory;
     }
 
-    public function setIdCategory(int $idCategory): self
+    public function setIdCategory(?Category $idCategory): self
     {
         $this->idCategory = $idCategory;
 
@@ -63,7 +80,7 @@ class Tricks
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 

@@ -25,11 +25,11 @@
             </tr>
             <tr>
                 <th>CreateAt</th>
-                <td>{{ trick.createAt ? trick.createAt|date('Y-m-d') : '' }}</td>
+                <td>{{ trick.createAt ? trick.createAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>UpdateAt</th>
-                <td>{{ trick.updateAt ? trick.updateAt|date('Y-m-d') : '' }}</td>
+                <td>{{ trick.updateAt ? trick.updateAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
