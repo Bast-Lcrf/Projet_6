@@ -24,44 +24,39 @@ html { /*
 }
 
 header {
-    z-index: -100;
-    margin-top: 5%;
-    margin-left: 10%;
-    height: 80vh;
-    width: 80%;
-    transform: rotate(4deg);
-    border: 20px solid white;
+    z-index: -10;
+    height: 90vh;
+    width: 100%;
     background: url('../images/background_snowtrick.jpeg');
     background-repeat: no-repeat;
     /*background-attachment: ;*/
     background-size: cover;
+    border-bottom: 2px solid black;
 }
 
 /* -------------------- Navigation -------------------- */
+
 .nav {
     z-index: 10;
     top: 0;
     position: fixed;
-    height: 100px;
-    background-color: rgba(0, 0, 0, 0.716);
-    backdrop-filter: blur(4px);
-    padding: 40px;
+    height: 80px;
+    background-color: transparent;
     display: flex;
     justify-content: space-between;
     width: 100%;
     box-sizing: border-box;
-}
-
-.nav a {
-    color: var(--orange-color);
-    text-decoration: none;
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid black;
 }
 
 .nav .logo {
+    text-decoration: none;
     top: 0;
     left: 0;
-    margin-top: -20px;
-    color: var(--lightred-color);
+    margin-top: 5px;
+    margin-left: 25px;
+    color: var(--black-color);
     font-size: 2.5em;
     font-weight: 500;
 }
@@ -71,19 +66,33 @@ header {
 }
 
 .nav .links ul li {
-    margin: 0 25px;
+    margin: 0px 0px;
+    right: 0;
+    padding-right: 0%;
+    padding-top: 25px;
+    width: 150px;
+    text-align: center;
+    background-color: transparent;
     font-family: 'Lora', sans-serif;
+    height: 80px;
+    align-items: center;
+}
+
+.nav .links ul li:hover {
+
 }
 
 .nav .links ul li a {
-    color: var(--orange-color);
+    text-decoration: none;
+    color: var(--black-color);
     font-size: 1.2em;
-    padding-top: 5%;
     transition: all 0.1s ease;
 }
 
 .nav .links ul li a:hover {
-    border-top: 3px solid var(--lightred-color);
+    cursor: pointer;
+    color: var(--lightred-color);
+    text-transform: uppercase;
 }
 
 .bx-menu {
@@ -97,17 +106,21 @@ header {
     .nav {
         padding: 0;
     }
+    .nav .logo {
+        top: 50px;
+    }
     .bx {
         display: block;
         position: fixed;
         opacity: 1;
         font-size: 45px;
+        margin-top: -20px;
     }
     .links {
         top: 0;
         left: 0;
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.423);
+        background-color: rgba(0, 0, 0, 0.824);
         backdrop-filter: blur(4px);
         width: 100%;
         height: 100vh;
@@ -130,6 +143,7 @@ header {
         font-size: 1.2em;
     }
     .nav .links ul li a {
+        text-transform: uppercase;
         color: lightgrey;
     }
 }
@@ -137,8 +151,178 @@ header {
 
 body {
     left: 0;
-    background: var(--creamy-color);
+    background: white;
+}
+
+.container {
+    margin-top: 8%;
+    background-color: #ffffff;
+    height: 600px;
+}
+
+.tricks_home {
+    color: var(--black-color);
+}
+
+/* -------------------- tricks home page -------------------- */
+
+.tricks_home {
+    margin: 5% 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 1% 1%;
+}
+
+.card-body {
+    margin: 4% 0%;
+}
+
+.card-body h5 {
+    font-size: 30px;
+    text-align: right;
+}
+
+.card_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 5%;
+}
+
+.card_button i {
+    color: #000;
+    font-size: 30px;
+}
+
+.button_edit {
+    margin-right: 5%;
+}
+
+
+/* -------------------- Login Form -------------------- */
+
+.login_page {
+    margin-top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+.login_page .button_login {
+    margin-top: 3%;
+}
+
+.login_page .button_login a {
+    text-decoration: none;
+    color: black;
+}
+
+.login_page .button_login a:hover {
+    color: #ffffff;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    width: 350px;
+    flex-direction: column;
+    gap: 35px;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 16px 16px 32px #c8c8c8,
+        -16px -16px 32px #fefefe;
+}
+
+h1, h3 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.inputBox {
+    position: relative;
+    width: 300px;
+}
+
+.inputBox input {
     width: 100%;
+    padding: 10px;
+    outline: none;
+    border: none;
+    color: #000;
+    font-size: 1em;
+    background: transparent;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    transition: 0.1s;
+}
+
+.inputBox span {
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+    transform: translateY(-4px);
+    margin-left: 10px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 12px;
+    color: #000;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 3px;
+}
+
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+    transform: translateX(125px) translateY(-20px);
+    font-size: 0.8em;
+    padding: 5px 10px;
+    background: #000;
+    letter-spacing: 0.2em;
+    color: #ffffff;
+    border: 2px;
+}
+
+.inputBox input:valid,
+.inputBox input:focus {
+    border: 2px solid #000;
+}
+
+.button_login {
+    height: 45px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.5s;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.button_login:hover {
+    background: #000;
+    color: white;
+}
+
+.login_page a {
+    text-decoration: none;
+    color: #000;
+}
+
+.login_page a:hover {
+    color: var(--ligthblue-color);
 }
 
 /* -------------------- Footer -------------------- */
@@ -146,7 +330,7 @@ body {
 footer {
     left: 0;
     bottom: 0;
-    background: var(--creamy-color);
+    background: transparent;
     margin-top: 5%;
     padding-top: 2%;
 }
@@ -166,6 +350,7 @@ footer {
     height: 100px;
     margin-left: 5%;
     background-color: var(--orange-color);
+    border-radius: 15px;
 }
 
 .nav_social ul {
@@ -187,6 +372,7 @@ footer {
     margin-left: 20%;
     height: 100px;
     background-color: var(--ligthblue-color);
+    border-radius: 15px;
 }
 
 .liens_utiles ul {

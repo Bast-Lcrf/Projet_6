@@ -3,8 +3,8 @@
 {% block title %}Snowtricks - Connexion{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="mt-4">Formulaire de connexion</h1>
+    <div class="login_page">
+        <h1>Formulaire de connexion</h1>
 
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success mt-4">
@@ -17,19 +17,28 @@
                     {{ error.messageKey|trans(error.messageData, 'security') }}
                 </div>
             {% endif %}
-        
+
+
             <form action="{{ path('security.login') }}" method="post">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Adresse email</label>
-                    <input type="email" class="form-control" id="username" 
-                    placeholder="exemple@snowtrick.com" name="_username" value="{{ last_username }}">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div class="cards">
+                    <h3>Login</h3>
+
+                    <div class="inputBox">
+                        <input type="email" id="username" name="_username"
+                        value="{{ last_username }}" required="required">
+                        <span>Adresse email</span>
+                    </div>
+
+                    <div class="inputBox">
+                        <input type="password" id="password" name="_password" required="required">
+                        <span>Mot de passe</span>
+                    </div>
+
+                    <button class="button_login" type="submit">Enter</button>
+                    <a href="">Mot de passe oublié</a>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Mot de passe</label>
-                    <input type="password" class="form-control" id="password" placeholder="********" name="_password">
-                </div>
-                <button type="submit" class="btn btn-primary mt-4">Se connecter</button>
             </form>
+
+            <button class="button_login"><a href="/inscription">inscription</a></button>
     </div>
 {% endblock %}

@@ -51,9 +51,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotNull()]
     private ?bool $termsAccepted = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $token = null;
+
+    #[ORM\Column]
+    #[Assert\NotNull()]
+    private ?bool $enable = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
+        $this->enable = false;
     }
 
     public function getId(): ?int
@@ -178,6 +186,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTermsAccepted(bool $termsAccepted): self
     {
         $this->termsAccepted = $termsAccepted;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    public function isEnable(): ?bool
+    {
+        return $this->enable;
+    }
+
+    public function setEnable(bool $enable): self
+    {
+        $this->enable = $enable;
 
         return $this;
     }

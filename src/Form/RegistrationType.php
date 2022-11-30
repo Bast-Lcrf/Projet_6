@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 use Symfony\Component\Validator\Constraints as Assert;
 use Webmozart\Assert\Assert as AssertAssert;
 
@@ -27,7 +28,7 @@ class RegistrationType extends AbstractType
                     'minlenght' => '2',
                     'maxlenght' => '50',
                 ],
-                'label' => 'Pseudo / Login',
+                'label' => 'Pseudo / Nom d\'utilisateur',
                 'label_attr' => [
                     'class' => 'form-label mt-4'
                 ],
