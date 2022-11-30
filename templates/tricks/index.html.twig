@@ -3,13 +3,34 @@
 {% block title %}Tricks index{% endblock %}
 
 {% block body %}
-    <h1>Tricks index</h1>
-    <div class="tricks_home">
+    <header></header>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div id="tricks" class="tricks_home">
         {% for trick in tricks %}
-        <h2>{{ trick.name }}</h2>
-        <p>{{ trick.description}}</p>
-        {% else %}
-        <p>pas de figure pour l'instant</p>
+        <div class="card" style="width: 18rem;">
+            <img src="../imagesTricks/ollie.jpeg" class="card-img-top" alt="{{ trick.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ trick.name }}</h5>
+                <div class="card_button">
+                    <div class="button_edit">
+                        <a href="{{ path('app_tricks_edit', {'id': trick.id}) }}">
+                            <i class='bx bxs-edit-alt'></i>
+                        </a>
+                    </div>
+                    <div class="button_delete">
+                        <a href="#">
+                            <i class='bx bxs-trash'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% endfor %}
     </div>
 

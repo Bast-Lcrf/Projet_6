@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\TricksRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -109,5 +112,13 @@ class Tricks
         $this->updateAt = $updateAt;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, ImagesTrick>
+     */
+    public function getImage(): Collection
+    {
+        return $this->image;
     }
 }
