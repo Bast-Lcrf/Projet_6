@@ -34,8 +34,6 @@ header {
     border-bottom: 2px solid black;
 }
 
-/* -------------------- Navigation -------------------- */
-
 .nav {
     z-index: 10;
     top: 0;
