@@ -12,6 +12,12 @@
                 </div>
             {% endfor %}
 
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger mt-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
             {% if error %}
                 <div class="alert alert-danger">
                     {{ error.messageKey|trans(error.messageData, 'security') }}
@@ -35,7 +41,7 @@
                     </div>
 
                     <button class="button_login" type="submit">Enter</button>
-                    <a href="">Mot de passe oublié</a>
+                    <a href="{{ path('security.forgotten.password') }}">Mot de passe oublié</a>
                 </div>
             </form>
 

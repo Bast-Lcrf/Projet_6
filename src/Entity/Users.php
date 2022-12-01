@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -10,9 +10,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[UniqueEntity('email')]
-#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Entity(repositoryClass: UsersRepository::class)]
 #[ORM\EntityListeners(['App\EntityListener\UserListener'])]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,7 +22,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank(message: 'Ce champ doit être complété')]
     #[Assert\Length(min: 2, max: 50)]
-    private ?string $login = null;
+    private ?string $pseudo = null;
 
     #[ORM\Column(length: 180, unique: true)]
     #[Assert\NotBlank()]
@@ -69,14 +69,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-    public function getLogin(): ?string
+    public function getPseudo(): ?string
     {
-        return $this->login;
+        return $this->pseudo;
     }
 
-    public function setLogin(string $login): self
+    public function setPseudo(string $pseudo): self
     {
-        $this->login = $login;
+        $this->pseudo = $pseudo;
 
         return $this;
     }

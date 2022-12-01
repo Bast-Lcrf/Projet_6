@@ -171,6 +171,10 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    background-color: lightgrey;
+    border-radius: 20px;
+    width: 90%;
+    padding: 5% 0%;
 }
 
 .card {

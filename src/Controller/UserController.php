@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\UserPasswordType;
+use App\Entity\Users;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +15,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserController extends AbstractController
 {
     #[Route('/utilisateur/edition/{id}', name: 'user.edit')]
-    public function edit(User $user, Request $request, EntityManagerInterface $manager,
+    public function edit(Users $user, Request $request, EntityManagerInterface $manager,
      UserPasswordHasherInterface $hasher): Response
     {
         if(!$this->getUser()) {
@@ -52,16 +51,6 @@ class UserController extends AbstractController
 
         return $this->render('user/edit.html.twig', [
             'form' => $form->createView(),
-        ]);
-    }
-
-    #[Route('/utilisateur/edition-mot-de-passe/{id}', name: 'user.edit.password', methods: ['GET', 'POST'])]
-    public function editPassword(User $user, Request $request): Response
-    {
-        $form = $this->createForm(UserPasswordType::class);
-
-        return $this->render('user/edit_password.html.twig', [
-            'form' => $form->createView()
         ]);
     }
 }
