@@ -3,43 +3,60 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Form\Category1Type;
+use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
+    /*
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository, Security $security): Response
     {
         return $this->render('category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
+            'users' => $security->getUser()
         ]);
-    }
+    }*/
 
-    #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CategoryRepository $categoryRepository): Response
+       
+    /**
+     * This controller allow us to create a new category for tricks
+     *
+     * @param  mixed $request
+     * @param  mixed $categoryRepository
+     * @param  mixed $security
+     * 
+     * @isGranted("ROLE_USER")
+     * @return Response
+     */
+    #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])] 
+    public function new(Request $request, CategoryRepository $categoryRepository, Security $security): Response
     {
         $category = new Category();
-        $form = $this->createForm(Category1Type::class, $category);
+        $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->save($category, true);
 
-            return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_tricks_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('category/new.html.twig', [
             'category' => $category,
             'form' => $form,
+            'users' => $security->getUser()
         ]);
     }
 
+    
     #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
     public function show(Category $category): Response
     {

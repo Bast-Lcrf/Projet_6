@@ -1,18 +1,18 @@
 <nav class="nav">
-    <a href="#" class="logo">Snowtricks</a>
-    <div class="links">
         <ul>           
-            <li><a href="/">Home</a></li>
-            <li><a href="/category">Category</a></li>
-            <li><a href="#tricks">tricks</a></li>
-
+            <li><a class="color_home" href="{{ path("app_home") }}">Home</a></li>
+            <li><a class="color_tricks" href="{{ path('app_home') }}#tricks">tricks</a></li>
+            <li><a class="color_newTricks" href="{{ path('app_tricks_new') }}">New tricks</a></li>
             {% if app.user %}
-                <li><a href="#">Profil</a></li>
-                <li><a href="/deconnexion">Déconnexion</a></li>
+                <li><a class="color_logout" href="/deconnexion">Déconnexion</a></li>
             {% else %}
-                <li><a href="/connexion">Connexion</a></li>
+                <li><a class="color_login" href="/connexion">Connexion</a></li>
             {% endif %}
         </ul>    
-    </div>
     <i class='bx bx-menu' alt='Menu Hamburger'></i>
 </nav>
+<div class="flying_button">
+    <button id="scrollTopBtn" onClick="topFunction()" title="Remonter en haut de la page">
+        <i class='bx bx-chevron-up slideUpButton'></i>
+    </button>
+</div>

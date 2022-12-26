@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Tricks{% endblock %}
+{% block title %}Nouveau Tricks - Snowtricks{% endblock %}
 
 {% block body %}
-    <h1>Create new Tricks</h1>
-
-    {{ include('tricks/_form.html.twig') }}
-
-    <a href="{{ path('app_tricks_index') }}">back to list</a>
+<div class="container">
+    <div class="tricks_new">
+        <h1>Formulaire de création d'un nouveau Tricks</h1>
+        <a href="{{ path('app_category_new') }}">Nouvelle categorie</a>
+            <div class="tricks_new_form">
+                {{ form_start(formNewTrick) }}
+                {{ form_widget(formNewTrick) }}
+                {{ form_end(formNewTrick) }}
+            </div>
+    </div>
+</div>
 {% endblock %}

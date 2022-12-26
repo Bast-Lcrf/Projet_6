@@ -33,7 +33,11 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/tricks/new, roles: ROLE_USER }
 
+    role_hierarchy:
+        ROLE_PRODUCT_ADMIN: ROLE_USER
+        ROLE_ADMIN: ROLE_PRODUCT_ADMIN
 when@test:
     security:
         password_hashers:

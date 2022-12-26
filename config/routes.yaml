@@ -4,4 +4,4 @@ controllers:
 
 index:
     path: /
-    controller: App\Controller\TricksController::index
+    controller: App\Controller\HomeController::index

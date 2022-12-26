@@ -108,7 +108,10 @@ class SecurityController extends AbstractController
      * @return void
      */
     #[Route("/confirmer-mon-compte/{token}", name: "confirm.account")]
-    public function confirmAccount(string $token, EntityManagerInterface $manager)
+    public function confirmAccount(
+        string $token,
+        EntityManagerInterface $manager
+        )
     {
         $user = $this->usersRepository->findOneBy(["token" => $token]);
 
@@ -131,6 +134,14 @@ class SecurityController extends AbstractController
         }
     }
 
+    /**
+     * this controller allow us to reset our password
+     * Generate token
+     * Generate url
+     * Send mail
+     *
+     * @return void
+     */
     #[Route('/mot-de-passe-oublie', name: 'security.forgotten.password')]
     public function forgottenPassword(
         Request $request,
@@ -190,7 +201,12 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    #[Route('/mot-de-passe-oublie/{token}', name: 'security.reset.password')]
+    /**
+     * This controller modify our password
+     *
+     * @return void
+     */
+    #[Route('/mot-de-passe-oublie/{token}', name: 'security.reset.password')] 
     public function resetPassword(
         string $token,
         Request $request,

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Snowtricks{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div  class="row tricks_home">
+        <div class="image_header">
+            <img src="../images/background_snowtrick.jpeg" alt="photo entête snowboard">
+            <a href="#tricks"><i class='bx bx-chevron-down'></i></a>
+            {% if app.user %}
+                <div class="connected">
+                    <li><span>Connecté : </span> {{ users.pseudo }} <span class="greenDot"></span></li>
+                </div>
+            {% endif %}
+            <div class="special_title">
+                <h1><span>S</span>now</h1>
+                <h1><span>T</span>ricks</h1>
+            </div>
+        </div>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <h1 class="col-12 tricks_title" id="tricks">Les Tricks</h1>
+        {% for trick in tricks %}
+            <div class="col-xl-3 col-lg-12 card">
+                <a href="{{ path('app_tricks_show', {'slug': trick.slug}) }}">
+                {% for image in trick.images|slice(0, 1) %}
+                    <img src="{{ asset('/imagesTricksUploads/' ~ image.name) }}" class="card-img-top" alt="{{ trick.name }}">
+                {% endfor %}
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{ path('app_tricks_show', {'slug': trick.slug}) }}">{{ trick.name }}</a></h5>
+                        {% if app.user %}
+                            <div class="card_button">
+                                <div class="button_edit">
+                                    <a href="{{ path('app_tricks_edit', {'id': trick.id}) }}">
+                                        <i class='bx bxs-edit-alt'></i>
+                                    </a>
+                                </div>
+                                <div class="button_delete">
+                                    <a href="{{ path('tricks.before.delete',{'slug': trick.slug}) }}">
+                                        <i class='bx bxs-trash'></i>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>   
+                </a>
+            </div>
+        {% endfor %}
+        <a href="#load" id="load" class=" col-xl-12 load_more">
+            Chargez plus de figures
+            <span class="loading"><span></span></span>
+        </a>
+    </div>
+</div>
+{% endblock %}

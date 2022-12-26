@@ -1,42 +1,124 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tricks{% endblock %}
+{% block title %}{{ trick.name }} - Snowtricks{% endblock %}
 
 {% block body %}
-    <h1>Tricks</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ trick.id }}</td>
-            </tr>
-            <tr>
-                <th>IdCategory</th>
-                <td>{{ trick.idCategory }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ trick.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ trick.description }}</td>
-            </tr>
-            <tr>
-                <th>CreateAt</th>
-                <td>{{ trick.createAt ? trick.createAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdateAt</th>
-                <td>{{ trick.updateAt ? trick.updateAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_tricks_index') }}">back to list</a>
-
-    <a href="{{ path('app_tricks_edit', {'id': trick.id}) }}">edit</a>
-
-    {{ include('tricks/_delete_form.html.twig') }}
+<div class="container">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="tricks_body">
+        <div class="tricks_title">
+            {% if images %}
+                {% for image in trick.images|slice(0,1) %}
+                    <img src="{{ asset('/imagesTricksUploads/' ~ image.name) }}" alt="{{ trick.name }}">
+                {% endfor %}
+            {% else %}
+                <img src="../images/background_snowtrick.jpeg" alt="Photo par default de snowboard">
+            {% endif %}
+            <h1>{{ trick.name }}</h1>
+            {% if app.user %}
+            <div class="button_block">
+                <div class="button_edit">
+                    <a href="{{ path('app_tricks_edit', {'id': trick.id}) }}">
+                        <i class='bx bxs-edit-alt'></i>
+                    </a>
+                </div>
+                <div class="button_delete">
+                    <a href="{{ path('tricks.before.delete',{'slug': trick.slug}) }}">
+                        <i class='bx bxs-trash'></i>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="tricks_media">
+            <h1>Média</h1>
+            <div class="row images_tricks">
+                <h2>Les photos :</h2>
+                {% if images %}
+                    {% for image in trick.images %}
+                        <img class="col-xl-4 col-lg-12" src="{{ asset('/imagesTricksUploads/' ~ image.name) }}" alt="{{ trick.name }}">
+                    {% endfor %}
+                    <span class="border_tricks"></span>
+                {% else %}
+                    <div role="alert" class="alert alert-warning">
+                        <p>Aucune image n'a été ajoutée à cette figure, connectez vous et allez dans l'éditeur pour en ajouter</p>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="row videos_tricks">
+                <h2>Les videos :</h2>
+                {% if videos %}
+                    {% for video in trick.videos %}
+                        <iFrame class="col-xl-6 col-lg-12" width="560" height="315" src="{{ video.name }}" title="video youtube snowboard freestyle" frameborder="0" allowfullscreen></iFrame>
+                    {% endfor %}
+                    <span class="border_tricks"></span>
+                {% else %}
+                    <div role="alert" class="alert alert-warning">
+                        <p>Aucune video n'a été ajoutée à cette figure, connectez vous et allez dans l'éditeur pour en ajouter</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="tricks_description">
+            <h1>Description :</h1>
+            <p>{{ trick.description }}</p>
+        </div>
+        <div class="tricks_widget">
+            <h2>Catégorie : <span class="span_1">{{ trick.idCategory }}</span></h2>
+            <h2>Créé le : <span class="span_2">{{ trick.createdAt ? trick.createdAt|date('d-m-Y') : '' }}</span></h2>
+            <h2>Dernière modification le : <span class="span_3">{{ trick.updatedAt ? trick.updatedAt|date('d-m-Y') : '' }}</span> à <span class="span_3">{{ trick.updatedAt ? trick.updatedAt|date('H:i:s') : '' }} </span></h2>
+        </div>
+        <div class="tricks_comments">
+            <h1 id="comments">Les commentaires :</h1>
+            {% if app.user %}
+                <form class="form_comments" action="{{ path('app_comments_new') }}" method="post">
+                    <div class="form_widget">
+                        <h4>Partagez votre savoir !</h4>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="comments"></textarea>
+                            <label for="floatingTextarea">Redigez votre commentaire ici</label>
+                        </div>
+                        <input type="hidden" value="{{ trick.id }}" name="idTrick">
+                        <button class="btn btn-warning" type="reset">Reset</button>
+                        <button class="btn btn-primary" type="submit">Envoyer</button>
+                    </div>
+                </form>
+                <br/>
+            {% else %}
+                <div role="alert" class="alert alert-warning">
+                    <p>Pour poster un commentaire, vous devez être connecté</p>
+                </div>
+            {% endif %}
+            {% if comments %}
+                {% for comment in trick.comments %}
+                    <div class="comments_card">
+                        <h3>{{ comment.pseudo }}</h3>
+                        <p>{{ comment.comment}}</p>
+                        <p>le : {{ comment.createdAt ? comment.createdAt|date('d-m-Y H:i:s') : '' }}</p>
+                        {% if app.user and app.user.pseudo == comment.pseudo %}
+                            <form method="post" action="{{ path('app_comments_delete', {'id': comment.id}) }}" onsubmit="return confirm('Supprimer définitivement mon commentaire ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                    <br/>
+                {% endfor %}
+                {% set path = 'app_tricks_show' %}
+                {% set slug = trick.slug %}
+                {% set pages = comments.pages %}
+                {% set currentPage = comments.page %}
+                {% include "tools/pagination.html.twig" %}
+            {% else %}
+                <div role="alert" class="alert alert-warning">
+                    <p>Aucun commentaire n'a été posté pour le moment</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

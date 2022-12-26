@@ -9,9 +9,6 @@
             {% include "tools/style.html.twig" %}
         {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
     </head>
     <body>
         {% include "tools/nav.html.twig" %}
@@ -19,14 +16,9 @@
         {% block body %}{% endblock %}
 
         {% include "tools/footer.html.twig" %}
-        <script>
-            const menuHamburger = document.querySelector(".bx")
-            const navLinks = document.querySelector(".links")
-    
-            menuHamburger.addEventListener('click',()=>{
-            navLinks.classList.toggle('mobile-menu')
-            })
-        </script>
-        <script src="js/bootstrap.bundle.min.js"></script>
+
+        {% block javascripts %}
+            {% include "tools/js.html.twig" %}
+        {% endblock %}
     </body>
 </html>

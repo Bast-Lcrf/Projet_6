@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Tricks{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="delete_trick">
+        <div class="alert alert-danger" role="alert">
+            <h4>Suppression de {{ trick.name }}</h4>
+            <p>Êtes vous sur de vouloir supprimer cette figure ?</p>
+            <p>Cette action est irreversible !</p>
+            <form method="post" action="{{ path('app_tricks_delete', {'id': trick.id}) }}" onsubmit="return confirm('Supprimer ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
+                <button class="btn btn-danger">Supprimer</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

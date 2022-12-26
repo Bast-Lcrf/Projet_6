@@ -3,11 +3,48 @@
 {% block title %}Edit Tricks{% endblock %}
 
 {% block body %}
-    <h1>Edit Tricks</h1>
-
-    {{ include('tricks/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_tricks_index') }}">back to list</a>
-
-    {{ include('tricks/_delete_form.html.twig') }}
+<div class="container">
+    <div class="tricks_edit">
+        <h1>Formulaire d'edition du Tricks : {{ trick.name }}</h1>
+        <a href="{{ path('app_category_new') }}">Nouvelle categorie</a>
+            <div class="tricks_edit_form">
+                {{ form_start(formEditTrick) }}
+                {{ form_row(formEditTrick.name) }}
+                {{ form_row(formEditTrick.description) }}
+                {{ form_row(formEditTrick.idCategory) }}
+                {{ form_row(formEditTrick.images) }}
+                {{ form_row(formEditTrick.video) }}
+                <br/>
+                <h2>Images :</h2>
+                {% if images %}
+                    {% for image in trick.images %}
+                        <div class="edit_delete_image">
+                            <img width="250" src="{{ asset('/imagesTricksUploads/' ~ image.name) }}" alt="{{ trick.name }}">
+                            <a href="{{ path('app_image_delete', {id: image.id}) }}" data-delete-image data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+                        </div>
+                        <br />
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-warning">
+                        <p>Auncune images pour cette figure, vous pouvez en ajouter au dessus</p>
+                    </div>
+                {% endif %}
+                <h2>Videos :</h2>
+                {% if videos %}
+                    {% for video in trick.videos %}
+                        <div class="edit_delete_video">
+                            <iFrame width="450" height="200" src="{{ video.name }}" title="video youtube snowboard freestyle" frameborder="0" allowfullscreen></iFrame>
+                            <a href="{{ path('app_video_delete', {id: video.id}) }}" data-delete-video data-token="{{ csrf_token('delete' ~ video.id) }}">Supprimer</a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-warning">
+                        <p>Auncune videos pour cette figure, vous pouvez en ajouter au dessus</p>
+                    </div>
+                {% endif %}
+                {{ form_row(formEditTrick.Submit)}}
+                {{ form_end(formEditTrick) }}
+            </div>
+    </div>
+</div>
 {% endblock %}
