@@ -1,5 +1,5 @@
 window.onload = () => {
-    // Gestion des liens supprimer
+    // Gestion des liens à supprimer
     let links = document.querySelectorAll('[data-delete-image]')
 
     // On boucle sur Links

@@ -20,13 +20,13 @@
                     {% for image in trick.images %}
                         <div class="edit_delete_image">
                             <img width="250" src="{{ asset('/imagesTricksUploads/' ~ image.name) }}" alt="{{ trick.name }}">
-                            <a href="{{ path('app_image_delete', {id: image.id}) }}" data-delete-image data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+                            <a href="{{ path('app_delete_image', {id: image.id}) }}" data-delete-image data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
                         </div>
                         <br />
                     {% endfor %}
                 {% else %}
                     <div class="alert alert-warning">
-                        <p>Auncune images pour cette figure, vous pouvez en ajouter au dessus</p>
+                        <p>Auncune images pour cette figure à supprimer</p>
                     </div>
                 {% endif %}
                 <h2>Videos :</h2>
@@ -39,7 +39,7 @@
                     {% endfor %}
                 {% else %}
                     <div class="alert alert-warning">
-                        <p>Auncune videos pour cette figure, vous pouvez en ajouter au dessus</p>
+                        <p>Auncune videos pour cette figure à supprimer</p>
                     </div>
                 {% endif %}
                 {{ form_row(formEditTrick.Submit)}}

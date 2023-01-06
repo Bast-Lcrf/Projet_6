@@ -613,6 +613,7 @@ body {
 
 .images_tricks img {
     border-radius: 25px;
+    margin-bottom: 4%;
 }
 
 .border_tricks {
@@ -627,6 +628,10 @@ body {
     padding-top: 0%;
     padding-bottom: 1%;
     color: var(--ligthblue-color);
+}
+
+.videos_tricks iframe {
+    margin-bottom: 2%;
 }
 
 .tricks_description {
@@ -875,11 +880,6 @@ h1, h3 {
     font-family: var(--Lora-font);
 }
 
-.tricks_new form {
-    font-family: var(--Lora-font);
-    font-size: 18px;
-}
-
 .tricks_new a {
     height: 50px;
     width: 250px;
@@ -909,7 +909,7 @@ h1, h3 {
     margin-top: 3%;
     padding: 4% 0;
     min-height: 400px;
-    width: 750px;
+    width: 1050px;
     flex-direction: column;
     gap: 35px;
     border-radius: 15px;
@@ -918,7 +918,29 @@ h1, h3 {
         -16px -16px 32px #fefefe;
 }
 
-/* -------------------- new.html.twig new tricks form -------------------- */
+.tricks_new form {
+    font-family: var(--Lora-font);
+    font-size: 18px;
+    width: 850px;
+}
+
+.tricks_new form button {
+    width: 100px;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 1% 0%;
+    width: 850px;
+}
+
+.tricks_new form button:hover {
+    background-color: black;
+    color: var(--orange-color);
+}
+
+/* -------------------- edit.html.twig edit tricks form -------------------- */
 
 .tricks_edit {
     display: flex;
@@ -977,6 +999,22 @@ h1, h3 {
     width: 850px;
 }
 
+.tricks_edit form button {
+    width: 100px;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 1% 0%;
+    width: 850px;
+}
+
+.tricks_edit form button:hover {
+    background-color: black;
+    color: var(--orange-color);
+}
+
 .tricks_edit .tricks_edit_form .edit_delete_image a {
     margin-left: 3%;
     padding: 1% 1%;
@@ -988,6 +1026,62 @@ h1, h3 {
     align-items: center;
     justify-content: space-around;
     margin-bottom: 4%;
+}
+
+/* -------------------- form new categorie -------------------- */
+
+.categorie_new {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #ffffff;
+    min-height: 90vh;
+}
+
+.categorie_new h1 {
+    font-family: var(--Lora-font);
+}
+
+.categorie_new form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    padding: 0% 2%;
+    padding-bottom: 2%;
+    min-height: 260px;
+    width: 500px;
+    flex-direction: column;
+    gap: 35px;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 16px 16px 32px #c8c8c8,
+        -16px -16px 32px #fefefe;
+}
+
+.categorie_new input {
+    width: 350px;
+}
+
+.categorie_new label {
+    font-family: var(--Lora-font);
+    font-size: 20px;
+    margin-bottom: 2%;
+}
+
+.categorie_new form button {
+    width: 100px;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    text-transform: uppercase;
+    padding: 2% 2%;
+}
+
+.categorie_new form button:hover {
+    background-color: black;
+    color: white;
 }
 
 /* -------------------- Footer -------------------- */
@@ -1073,4 +1167,13 @@ footer {
     .liens_utiles ul li {
         font-size: 0.5em;
     }
+}
+
+/* -------------------- Alerts -------------------- */
+
+.alert-danger, .alert-success, .alert-warning {
+    text-align: center;
+    font-family: var(--Lora-font);
+    font-size: 20px;
+    max-height: 70px;
 }

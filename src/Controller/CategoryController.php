@@ -15,7 +15,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
-    /*
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository, Security $security): Response
     {
@@ -23,7 +22,7 @@ class CategoryController extends AbstractController
             'categories' => $categoryRepository->findAll(),
             'users' => $security->getUser()
         ]);
-    }*/
+    }
 
        
     /**

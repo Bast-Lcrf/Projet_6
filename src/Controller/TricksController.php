@@ -6,8 +6,6 @@ use App\Entity\Images;
 use App\Entity\Tricks;
 use App\Entity\Videos;
 use App\Form\TricksFormType\EditTrickType;
-use App\Form\TricksType;
-use Doctrine\ORM\Query\Expr\Func;
 use App\Repository\ImagesRepository;
 use App\Repository\TricksRepository;
 use App\Repository\VideosRepository;
@@ -15,6 +13,7 @@ use App\Repository\CommentsRepository;
 use App\Form\TricksFormType\NewTrickType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query\Expr\Func;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -290,7 +289,7 @@ class TricksController extends AbstractController
      * @param  mixed $manager
      * @return void
      */
-    #[Route('/supprime/image/{id}', name: 'app_image_delete', methods: ['DELETE'])] 
+    #[Route('/supprime/image/{id}', name: 'app_delete_image', methods: ['DELETE'])]
     public function deleteImage(Images $image, Request $request, EntityManagerInterface $manager)
     {
         $data = json_decode($request->getContent(), true);
