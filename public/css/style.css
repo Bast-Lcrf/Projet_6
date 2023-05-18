@@ -99,7 +99,7 @@ html {
     display: none;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
     .nav {
         padding: 0;
     }
@@ -232,6 +232,27 @@ body {
     color: var(--black-color);
 }
 
+@media screen and (max-width: 1024px) {
+    .container {
+        margin-top: 10%;
+    }
+}
+@media screen and (max-width: 912px) {
+    .container {
+        margin-top: 5%;
+    }
+}
+@media screen and (max-width: 820px) {
+    .container {
+        margin-top: 25%;
+    }
+}
+@media screen and (max-width: 540px) {
+    .container {
+        margin-top: 30%;
+    }
+}
+
 /* -------------------- tricks home page -------------------- */
 
 .tricks_home {
@@ -296,6 +317,11 @@ body {
 .tricks_home .image_header i:hover {
     background-color: var(--orange-color);
 }
+@media screen and (max-width: 1024px) {
+    .tricks_home .image_header i {
+        top: 85%;
+    }
+}
 
 .tricks_home .image_header .special_title {
     position: absolute;
@@ -309,7 +335,6 @@ body {
     transform: rotate(-10deg);
     border: 4px solid var(--lightred-color);
 }
-
 .tricks_home .image_header .special_title span {
     font-family: var(--SedgwickAve-font);
     font-size: 100px;
@@ -324,6 +349,90 @@ body {
     border-top: 4px solid var(--black-color);
     border-bottom: 4px solid var(--black-color);
 }
+@media screen and (max-width: 1024px) {
+    .tricks_home .image_header .special_title {
+        width: 40%;
+    }
+    .tricks_home .image_header .special_title h1 {
+        font-size: 50px;
+    }
+    .tricks_home .image_header .special_title span {
+        font-size: 80px;
+    }
+    .tricks_home .connected {
+        transform: translateY(70%) translateX(-10%);
+    }
+}
+@media screen and (max-width: 912px) {
+    .tricks_home .image_header .special_title {
+        width: 35%;
+        top: 2%;
+    }
+    .tricks_home .image_header .special_title h1 {
+        font-size: 35px;
+    }
+    .tricks_home .image_header .special_title span {
+        font-size: 60px;
+    }
+    .tricks_home .connected {
+        transform: translateY(-320%) translateX(-60%);
+    }
+}
+@media screen and (max-width: 820px) {
+    .tricks_home .image_header .special_title {
+        transform: rotate(0);
+        width: 80%;
+        padding-left: 30%;
+        padding-top: 0;
+        background-color: transparent;
+        border: none;
+    }
+    .tricks_home .image_header .special_title h1 {
+        font-size: 60px; 
+    }
+    .tricks_home .image_header .special_title span {
+        font-size: 60px;
+    }
+    .tricks_home .connected {
+        transform: translateY(-180%) translateX(25%);
+    }
+}
+@media screen and (max-width: 540px) {
+    .tricks_home .image_header .special_title {
+        padding-left: 20%;
+    }
+    .tricks_home .connected {
+        transform: translateY(-120%) translateX(-100%);
+    }
+}
+@media screen and (max-width: 415px) {
+    .tricks_home .image_header .special_title {
+        padding-left: 15%;
+        transform: translateY(-30%);
+    }
+    .tricks_home .connected {
+        display: none;
+    }
+}
+@media screen and (max-width: 415px) {
+    .tricks_home .image_header .special_title {
+        padding-left: 10%;
+        transform: translateY(-30%);
+    }
+}
+@media screen and (max-width: 280px) {
+    .tricks_home .image_header .special_title {
+        padding-left: 0%;
+        transform: translateY(-40%);
+    }
+    .tricks_home .image_header .special_title h1 {
+        font-size: 15px;
+    }
+    .tricks_home .image_header .special_title span {
+        font-size: 25px;
+    }
+}
+
 
 .tricks_home .tricks_title {
     font-family: var(--SedgwickAve-font);
@@ -350,6 +459,37 @@ body {
     box-shadow: 16px 16px 32px #c8c8c8,
     -16px -16px 32px #fefefe;
     transition: all 0.1s ease;
+}
+@media screen and (max-width: 1024px) {
+    .card {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 540px) {
+    .card {
+        min-width: 70%;
+    }
+}
+@media screen and (max-width: 415px) {
+    .card {
+        min-width: 90%;
+    }
+}
+@media screen and (max-width: 375px) {
+    .card {
+        min-width: 95%;
+    }
+}
+@media screen and (max-width: 280px) {
+    .card {
+        min-width: 100%;
+    }
+    .card-body h5 {
+        width: 190px;
+        transform: translateX(-10%);
+        margin: 0;
+        font-size: 15px;
+    }
 }
 
 .card:hover {
@@ -387,6 +527,15 @@ body {
     margin: 5% 20%;
     align-items: center;
 }
+@media screen and (max-width: 360px) {
+    .card-body h5 {
+        margin: 0;
+    }
+    .card_button {
+        margin: 0;
+        width: 99%;
+    }
+}
 
 .card_button i {
     color: #000;
@@ -409,6 +558,12 @@ body {
     width: 800px;
     height: 80px;
     opacity: 0.9;
+}
+@media screen and (max-width: 415px) {
+    .tricks_home .load_more {
+        font-size: 20px;
+        padding-top: 5%;
+    }
 }
 .tricks_home .load_more:hover {
     opacity: 1;
@@ -506,10 +661,10 @@ body {
         left: 3%;
     }
     .tricks_home .image_header .special_title span {
-        font-size: 55px;
+        font-size: 50px;
     }
     .tricks_home .image_header .special_title h1 {
-        font-size: 45px;
+        font-size: 40px;
     }
     .tricks_home .tricks_title {
         font-size: 35px;
@@ -721,7 +876,73 @@ body {
     border-bottom: 1px solid white;
     padding-bottom: 2%;
 }
-
+@media screen and (max-width: 1024px) {
+    .tricks_comments .comments_card {
+        width: 500px;
+    }
+    .tricks_widget h2 {
+        font-size: 17px;
+    }
+}
+@media screen and (max-width: 820px) {
+    .tricks_comments .comments_card {
+        max-width: 65%;
+    }
+}
+@media screen and (max-width: 540px) {
+    .tricks_widget h2 {
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 415px) {
+    .tricks_title h1 {
+        font-size: 20px;
+    }
+    .button_block {
+        width: 100px;
+    }
+    .button_block .button_edit a {
+        font-size: 30px;
+    }
+    .button_block .button_delete a {
+        font-size: 30px;
+    }
+    .tricks_widget h2 {
+        font-size: 8px;
+    }
+    .tricks_comments h1 {
+        font-size: 24px;
+    }
+}
+@media screen and (max-width: 375px) {
+    .tricks_comments .comments_card p {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 360px) {
+    .tricks_comments .comments_card {
+        min-width: 90%;
+        margin-left: 5%;
+    }
+}
+@media screen and (max-width: 280px) {
+    .tricks_description h1 {
+        font-size: 18px;
+    }
+    .tricks_description p {
+        font-size: 20px;
+    }
+    .tricks_widget h2 {
+        font-size: 15px;
+    }
+    .tricks_comments h1 {
+        font-size: 15px;
+    }
+    .tricks_comments .comments_card {
+        min-width: 100%;
+        margin-left: 0%;
+    }
+}
 
 .tricks_comments .comments_card h3 {
     font-family: var(--Lora-font);
@@ -744,6 +965,119 @@ body {
     margin-top: 2%;
 }
 
+.show_media {
+    display: none;
+}
+.hide_media {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .tricks_title h1 {
+        top: 65%;
+    }
+    .tricks_body {
+        width: 95%;
+    }
+    .show_media {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-decoration: none;
+        background-color: var(--white-color);
+        color: var(--orange-color);
+        padding: 1% 1%;
+        border: 2px solid black;
+        width: 100%;
+        border-radius: 12px;
+        font-family: var(--SedgwickAve-font);
+        margin-bottom: 5%;
+        text-align: center;
+    }
+    .hide_media {
+        display: none;
+        text-decoration: none;
+        background-color: var(--white-color);
+        color: var(--lightred-color);
+        padding: 1% 1%;
+        border: 2px solid black;
+        width: 100%;
+        border-radius: 12px;
+        font-family: var(--SedgwickAve-font);
+        margin-bottom: 5%;
+        text-align: center;
+    }
+    .tricks_media {
+        display: none;
+    }
+    .tricks_comments .comments_card {
+        width: 80%;
+    }
+    .tricks_widget h2 {
+        font-size: 12px;
+    }
+}
+
+/* -------------------- Page suppression tricks -------------------- */
+
+.delete_trick {
+    margin: 5% 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    width: 100%;
+    padding: 2% 5%;
+    background-color: #ffffff;
+    box-shadow: 16px 16px 32px #c8c8c8,
+    -16px -16px 32px #fefefe;
+    height: 55vh;
+}
+
+/* -------------------- Les catégories -------------------- */
+
+.categories {
+    margin: 5% 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    width: 100%;
+    padding: 2% 5%;
+    background-color: #ffffff;
+    box-shadow: 16px 16px 32px #c8c8c8,
+    -16px -16px 32px #fefefe;
+    height: 70vh;
+}
+
+.categories a {
+    color: var(--black-color);
+    background-color: var(--white-color);
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 1% 1%;
+    text-decoration: none;
+    width: 250px;
+    text-align: center;
+    font-family: var(--Lora-font);
+    transition: all 0.4s ease;
+}
+
+.categories a:hover {
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+
+.categories .btn:hover {
+    border: 1px solid red;
+    color: red;
+}
+
+@media screen and (max-width: 900px) {
+    .categories {
+        width: 95%;
+    }
+}
 
 /* -------------------- Login Form -------------------- */
 
@@ -755,6 +1089,26 @@ body {
     flex-direction: column;
     background: #ffffff;
     min-height: 100vh;
+}
+@media screen and (max-width: 1024px) {
+    .login_page {
+        margin-top: 10%;
+    }
+}
+@media screen and (max-width: 820px) {
+    .login_page {
+        margin-top: 5%;
+    }
+}
+@media screen and (max-width: 415px) {
+    .login_page h1 {
+        font-size: 25px;
+    }
+}
+@media screen and (max-width: 360px) {
+    .login_page h1 {
+        font-size: 20px;
+    }
 }
 
 .login_page .button_login {
@@ -875,11 +1229,9 @@ h1, h3 {
     background: #ffffff;
     min-height: 100vh;
 }
-
 .tricks_new h1 {
     font-family: var(--Lora-font);
 }
-
 .tricks_new a {
     height: 50px;
     width: 250px;
@@ -938,6 +1290,25 @@ h1, h3 {
 .tricks_new form button:hover {
     background-color: black;
     color: var(--orange-color);
+}
+
+@media screen and (max-width: 912px) {
+    .tricks_new h1 {
+        font-size: 20px;
+        margin-bottom: 5%;
+    }
+    .tricks_new a {
+        margin-bottom: 5%;
+    }
+    .tricks_new .tricks_new_form {
+        width: 90%;
+    }
+    .tricks_new form {
+        width: 80%;
+    }
+    .tricks_new form button {
+        width: 100%;
+    }
 }
 
 /* -------------------- edit.html.twig edit tricks form -------------------- */
@@ -1027,6 +1398,45 @@ h1, h3 {
     justify-content: space-around;
     margin-bottom: 4%;
 }
+@media screen and (max-width: 415px) {
+    .tricks_edit .tricks_edit_form .edit_delete_image a {
+        margin-left: 5%;
+    }
+    .tricks_edit .tricks_edit_form .edit_delete_video {
+        flex-direction: column;
+        margin-bottom: 4%;
+    }
+    .tricks_edit .tricks_edit_form .edit_delete_video iframe {
+        width: auto;
+        margin-bottom: 5%;
+    }
+}
+@media screen and (max-width: 375px) {
+    .tricks_edit .tricks_edit_form .edit_delete_video iframe {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+}
+@media screen and (max-width: 360px) {
+    .tricks_edit .tricks_edit_form .edit_delete_image img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .tricks_edit h1 {
+        font-size: 20px;
+    }
+    .tricks_edit .tricks_edit_form {
+        width: 90%;
+    }
+    .tricks_edit form {
+        width: 80%;
+    }
+    .tricks_edit form button {
+        width: 100%;
+    }
+}
 
 /* -------------------- form new categorie -------------------- */
 
@@ -1059,6 +1469,11 @@ h1, h3 {
     box-shadow: 16px 16px 32px #c8c8c8,
         -16px -16px 32px #fefefe;
 }
+@media screen and (max-width: 415px) {
+    .categorie_new form {
+        width: 110%;
+    }
+}
 
 .categorie_new input {
     width: 350px;
@@ -1082,6 +1497,12 @@ h1, h3 {
 .categorie_new form button:hover {
     background-color: black;
     color: white;
+}
+
+@media screen and (max-width: 900px) {
+    .categorie_new h1 {
+        font-size: 20px;
+    }
 }
 
 /* -------------------- Footer -------------------- */
@@ -1149,6 +1570,10 @@ footer {
     padding: 10px 50px;
 }
 
+.liens_utiles ul li a {
+    font-size: 0.6em;
+}
+
 .liens_utiles ul li a:hover {
     border-bottom: 2px solid black;
 }
@@ -1163,17 +1588,139 @@ footer {
 
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1024px) {
+    .liens_utiles ul li a {
+        font-size: 0.4em;
+    }
+}
+@media screen and (max-width: 912px) {
+    .liens_utiles {
+        bottom: 0;
+    }
+    .liens_utiles ul li a {
+        font-size: 0.3em;
+    }
+}
+@media screen and (max-width: 820px) {
+    .nav_social {
+        width: 82%;
+        margin-left: 6%;
+        margin-bottom: 2%;
+    }
+    .liens_utiles {
+        width: 82%;
+        margin-left: 6%;
+    }
+    .liens_utiles ul li a {
+        font-size: 0.3em;
+    }
     .liens_utiles ul li {
-        font-size: 0.5em;
+        transform: translateY(-10%);
+    }
+}
+@media screen and (max-width: 540px) {
+    .nav_footer {
+        display: flex;
+    }
+    .nav_social {
+        width: 35%;
+        height: auto;
+        margin-left: 8%;
+    }
+    .nav_social ul {
+        transform: translateX(-10%);
+        flex-direction: column;
+    }
+    .nav_social ul li {
+        padding: 15% 0;
+    }
+    .liens_utiles {
+        width: 35%;
+        height: 440px;
+    }
+    .liens_utiles ul {
+        transform: translateX(-10%) translateY(0%);
+        flex-direction: column;
+    }
+    .liens_utiles ul li {
+        padding: 25% 0;
+    }
+}
+@media screen and (max-width: 415px) {
+    .nav_footer {
+        margin-left: 5%;
+    }
+    .liens_utiles {
+        height: 397px;
+        width: 35%;
+    }
+    .liens_utiles ul li {
+        padding: 25% 0;
+    }
+    .liens_utiles ul li a {
+        font-size: 0.25em;
+    }
+    .copyright {
+        font-size: 1em;
+    }
+}
+@media screen and (max-width: 375px) {
+    .copyright {
+        font-size: 0.8em;
+    }
+}
+@media screen and (max-width: 360px) {
+    .liens_utiles ul li {
+        padding: 28% 0;
+    }
+    .liens_utiles ul li a {
+        font-size: 0.20em;
+    }
+}
+@media screen and (max-width: 280px) {
+    .nav_footer {
+        display: unset;
+    }
+    .nav_social {
+        width: 55%;
+        height: auto;
+        margin-left: 20%;
+    }
+    .nav_social ul {
+        transform: translateX(-10%);
+        flex-direction: column;
+    }
+    .nav_social ul li {
+        padding: 15% 0;
+    }
+    .liens_utiles {
+        width: 55%;
+        height: auto;
+        margin-left: 20%;
+    }
+    .liens_utiles ul {
+        transform: translateX(-10%) translateY(0%);
+        flex-direction: column;
+    }
+    .liens_utiles ul li {
+        padding: 25% 0;
+    }
+    .liens_utiles ul li a {
+        font-size: 0.3em;
     }
 }
 
 /* -------------------- Alerts -------------------- */
 
-.alert-danger, .alert-success, .alert-warning {
+.alert-success, .alert-warning, .alert-danger {
     text-align: center;
     font-family: var(--Lora-font);
     font-size: 20px;
-    max-height: 70px;
+    height: 70px;
+}
+
+@media screen and (max-width: 1024px) {
+    .alert-success, .alert-warning, .alert-danger {
+        height: auto;
+    }
 }

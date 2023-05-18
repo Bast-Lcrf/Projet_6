@@ -43,7 +43,7 @@ class CommentsRepository extends ServiceEntityRepository
     /**
      * This controller paginate comments
      *
-     * @return void
+     * @return array
      */
     public function getPaginatedComment(
             int $id,

@@ -95,6 +95,10 @@ class TricksController extends AbstractController
 
             $tricksRepository->save($trick, true);
 
+            $this->addFlash(
+                'success',
+                'Le Tricks a bien été ajouté.'
+            );
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -210,6 +214,10 @@ class TricksController extends AbstractController
 
             $tricksRepository->save($trick, true);
 
+            $this->addFlash(
+                'success',
+                'Le Tricks a bien été mis à jours.'
+            );
             return $this->redirectToRoute('app_tricks_show', ['slug' => $trick->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
@@ -234,7 +242,7 @@ class TricksController extends AbstractController
      * @return void
      */
     #[Route('/before-delete/{slug}', name: 'tricks.before.delete', methods: ['GET', 'POST'])]
-    public function beforeDelete(Tricks $tricks, Security $security)
+    public function beforeDelete(Tricks $tricks, Security $security): Response
     {
         return $this->render('tricks/tricksDelete.html.twig', [
             'trick' => $tricks,
@@ -287,7 +295,8 @@ class TricksController extends AbstractController
      * @param  mixed $image
      * @param  mixed $request
      * @param  mixed $manager
-     * @return void
+     * 
+     * @return JsonResponse|null
      */
     #[Route('/supprime/image/{id}', name: 'app_delete_image', methods: ['DELETE'])]
     public function deleteImage(Images $image, Request $request, EntityManagerInterface $manager)
@@ -318,7 +327,8 @@ class TricksController extends AbstractController
      * @param  mixed $video
      * @param  mixed $request
      * @param  mixed $manager
-     * @return void
+     * 
+     * @return JsonResponse|null
      */
     #[Route('/supprime/video/{id}', name: 'app_video_delete', methods: ['DELETE'])] 
     public function deleteVideos(Videos $video, Request $request, EntityManagerInterface $manager)

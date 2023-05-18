@@ -105,7 +105,8 @@ class SecurityController extends AbstractController
      * This controller confirm the account with generated token
      *
      * @param  mixed $token
-     * @return void
+     * 
+     * @return response|null
      */
     #[Route("/confirmer-mon-compte/{token}", name: "confirm.account")]
     public function confirmAccount(
