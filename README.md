@@ -14,6 +14,8 @@ This project is a community and collaborative website about freestyle snowboardi
 A list of technologies used within the project :
 * [PHP 8.2.1](https://www.php.net/)
 * [Symfony 6.1.7](https://symfony.com/)
+* [Twig](https://twig.symfony.com/)
+* [Javascript](https://www.javascript.com/)
 * [Apache 2.0](https://www.apachelounge.com/download/VC15/)
 * [MySQL 5.7.32](https://downloads.mysql.com/archives/installer/)
 * [Bootstrap 5.2.1](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
