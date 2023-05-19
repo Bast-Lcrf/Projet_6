@@ -16,15 +16,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 #[Route('/comments')]
 class CommentsController extends AbstractController
 {
-/*    #[Route('/', name: 'app_comments_index', methods: ['GET'])]
-    public function index(CommentsRepository $commentsRepository): Response
-    {
-        return $this->render('comments/index.html.twig', [
-            'comments' => $commentsRepository->findAll(),
-        ]);
-    } */
-
-        
     /**
      * This controller allow us to add a comment
      * 
@@ -77,7 +68,6 @@ class CommentsController extends AbstractController
             );
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
-        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{id}', name: 'app_comments_show', methods: ['GET'])]

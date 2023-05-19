@@ -1034,6 +1034,10 @@ body {
     height: 55vh;
 }
 
+.delete_trick .alert-danger {
+    height: auto;
+}
+
 /* -------------------- Les catégories -------------------- */
 
 .categories {
