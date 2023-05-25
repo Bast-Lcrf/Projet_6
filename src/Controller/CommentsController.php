@@ -37,14 +37,14 @@ class CommentsController extends AbstractController
         // On récupère les données du formulaire
         if($request->isMethod('post')) {
             $posts = $request->request->all();
-            $comment->setComment(htmlspecialchars($posts['comments']));
+            $comment->setComment(htmlspecialchars($posts['comments'], ENT_NOQUOTES));
             // On envoie le pseudo 
             $comment->setPseudo($currentUserPseudo);
             // On envoie l'entité utilisateur
             $comment->setIdUser($security->getUser());
 
             // On set up la date 
-            $dateTime = new \DateTimeImmutable('now');
+            $dateTime = new \DateTimeImmutable('Europe/Paris');
             $comment->setCreatedAt($dateTime);
 
             // On récupère le tricks 

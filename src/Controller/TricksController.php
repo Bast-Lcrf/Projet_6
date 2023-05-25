@@ -46,7 +46,7 @@ class TricksController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // On récupère les données du champ video
-            $video = $form->get('video')->getData();
+            $video = htmlspecialchars($form->get('video')->getData());
 
             // on vérifie elle n'est pas vide
             if(!empty($video)) {
@@ -90,8 +90,14 @@ class TricksController extends AbstractController
 
             // On slug le nom pour le mettre en BDD
             $slugger = new AsciiSlugger();
-            $slug = $slugger->slug($form->get('name')->getdata());
+            $slug = $slugger->slug(htmlspecialchars($form->get('name')->getdata()));
             $trick->setSlug($slug);
+
+            // On sécurise le nom et la description du tricks
+            $name = htmlspecialchars($form->get('name')->getData());
+            $description = htmlspecialchars($form->get('description')->getData());
+            $trick->setName($name);
+            $trick->setDescription($description);
 
             $tricksRepository->save($trick, true);
 
@@ -170,7 +176,7 @@ class TricksController extends AbstractController
             $trick->setUpdatedAt($dateTime);
 
             // On récupère le lien de la video
-            $video = $form->get('video')->getData();
+            $video = htmlspecialchars($form->get('video')->getData());
 
             // on vérifie si elle existe
             if(!empty($video)) {
@@ -211,6 +217,12 @@ class TricksController extends AbstractController
                 $img->setName($fichier);
                 $trick->addImage($img);
             }           
+
+            // On sécurise le nom et la description du tricks
+            $name = htmlspecialchars($form->get('name')->getData(), ENT_NOQUOTES);
+            $description = htmlspecialchars($form->get('description')->getData(), ENT_NOQUOTES);
+            $trick->setName($name);
+            $trick->setDescription($description);
 
             $tricksRepository->save($trick, true);
 

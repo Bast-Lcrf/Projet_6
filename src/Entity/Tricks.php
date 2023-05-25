@@ -132,11 +132,11 @@ class Tricks
     }
 
     /**
-     * @return Collection<int, ImagesTrick>
+     * @return Collection<int, Images>
      */
     public function getImage(): Collection
     {
-        return $this->image;
+        return $this->images;
     }
 
     /**

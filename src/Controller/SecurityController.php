@@ -86,7 +86,7 @@ class SecurityController extends AbstractController
             $manager->persist($user);
             $manager->flush();
             $this->sendMailService->send(
-                "no-replay@inscription-snowtricks.com",
+                "no-reply@inscription-snowtricks.com",
                 $user->getEmail(),
                 'Validation d\'inscription',
                 'emailValidationInscription',

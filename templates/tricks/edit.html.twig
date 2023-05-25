@@ -34,7 +34,7 @@
                     {% for video in trick.videos %}
                         <div class="edit_delete_video">
                             <iFrame width="450" height="200" src="{{ video.name }}" title="video youtube snowboard freestyle" frameborder="0" allowfullscreen></iFrame>
-                            <a href="{{ path('app_video_delete', {id: video.id}) }}" data-delete-video data-token="{{ csrf_token('delete' ~ video.id) }}">Supprimer</a>
+                            <a href="{{ path('app_video_delete', {id: video.id}) }}" video-data-delete data-token="{{ csrf_token('delete' ~ video.id) }}">Supprimer</a>
                         </div>
                     {% endfor %}
                 {% else %}
