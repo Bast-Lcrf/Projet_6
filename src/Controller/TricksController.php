@@ -94,8 +94,8 @@ class TricksController extends AbstractController
             $trick->setSlug($slug);
 
             // On sécurise le nom et la description du tricks
-            $name = htmlspecialchars($form->get('name')->getData());
-            $description = htmlspecialchars($form->get('description')->getData());
+            $name = htmlspecialchars($form->get('name')->getData(), ENT_NOQUOTES);
+            $description = htmlspecialchars($form->get('description')->getData(), ENT_NOQUOTES);
             $trick->setName($name);
             $trick->setDescription($description);
 

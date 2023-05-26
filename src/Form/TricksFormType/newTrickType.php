@@ -78,7 +78,7 @@ class NewTrickType extends AbstractType
                     'class' => 'form-label mt-4'
                 ]
             ])
-            ->add('Submit', SubmitType::class, [
+            ->add('Envoyer', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-primary mt-4'
                 ],
